@@ -13,6 +13,7 @@ const build = [
 		files: [
 			{ name: "web.min.css", src: root + "/styles" },
 			{ name: "custom.bootstrap.min.css", src: root + "/styles" },
+			{ name: "animate.min.css", src: root + "/styles/libs" },
 		],
 	},
 	{
