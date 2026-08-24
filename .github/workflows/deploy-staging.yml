@@ -1,9 +1,9 @@
-name: Deploy to OVH
+name: Deploy to OVH - Staging
 
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   deploy:
@@ -24,11 +24,11 @@ jobs:
       - name: Build website
         run: npm run build
 
-      - name: Deploy to OVH
+      - name: Deploy to OVH - Staging
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
-          server-dir: /www/
+          server-dir: /staging/
