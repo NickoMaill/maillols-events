@@ -1,5 +1,124 @@
+@import './libs/bs/scss/mixins/banner';
+@include bsBanner('');
+
+// Configuration
 @import './libs/bs/scss/functions';
 @import './customs/variables';
-@import './libs/bs/scss/bootstrap.scss';
+@import './libs/bs/scss/variables';
+@import './libs/bs/scss/variables-dark';
+@import './libs/bs/scss/maps';
+@import './libs/bs/scss/mixins';
+@import './libs/bs/scss/utilities';
 
-.row { margin-left: 0; margin-right: 0; } 
+// Project tokens exposed through Bootstrap's utility API.
+$utilities: map-merge(
+    $utilities,
+    (
+        'color': map-merge(
+            map-get($utilities, 'color'),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, 'color'), 'values'),
+                    ('secondary-subtle': $me-subtle-secondary)
+                )
+            )
+        ),
+        'background-color': map-merge(
+            map-get($utilities, 'background-color'),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, 'background-color'), 'values'),
+                    ('pink': $me-pink)
+                )
+            )
+        ),
+        'font-family': map-merge(
+            map-get($utilities, 'font-family'),
+            (
+                values: map-merge(
+                    map-get(map-get($utilities, 'font-family'), 'values'),
+                    (
+                        'athelas': ('Athelas', Georgia, serif),
+                        'bebas': ('Bebas Neue', 'Arial Narrow', sans-serif)
+                    )
+                )
+            )
+        ),
+        'width': map-merge(
+            map-get($utilities, 'width'),
+            (responsive: true)
+        )
+    )
+);
+
+// Layout & components
+@import './libs/bs/scss/root';
+@import './libs/bs/scss/reboot';
+@import './libs/bs/scss/type';
+@import './libs/bs/scss/images';
+@import './libs/bs/scss/containers';
+@import './libs/bs/scss/grid';
+@import './libs/bs/scss/tables';
+@import './libs/bs/scss/forms';
+@import './libs/bs/scss/buttons';
+@import './libs/bs/scss/transitions';
+@import './libs/bs/scss/dropdown';
+@import './libs/bs/scss/button-group';
+@import './libs/bs/scss/nav';
+@import './libs/bs/scss/navbar';
+@import './libs/bs/scss/card';
+@import './libs/bs/scss/accordion';
+@import './libs/bs/scss/breadcrumb';
+@import './libs/bs/scss/pagination';
+@import './libs/bs/scss/badge';
+@import './libs/bs/scss/alert';
+@import './libs/bs/scss/progress';
+@import './libs/bs/scss/list-group';
+@import './libs/bs/scss/close';
+@import './libs/bs/scss/toasts';
+@import './libs/bs/scss/modal';
+@import './libs/bs/scss/tooltip';
+@import './libs/bs/scss/popover';
+@import './libs/bs/scss/carousel';
+@import './libs/bs/scss/spinners';
+@import './libs/bs/scss/offcanvas';
+@import './libs/bs/scss/placeholders';
+
+// Helpers & generated utilities
+@import './libs/bs/scss/helpers';
+@import './libs/bs/scss/utilities/api';
+
+// Fixed, semantic type scale using Bootstrap's md and xl breakpoints.
+$project-font-sizes: (
+    'display': (80px, 100px, 100px),
+    'editorial': (42px, 52px, 50px),
+    'list': (27px, 32px, 35px),
+    'expertise': (28px, 36px, 44px),
+    'step': (28px, 34px, 40px),
+    'body': (17px, 18px, 20px),
+    'contact': (16px, 18px, 20px),
+    'eyebrow': (14px, 16px, 18px),
+    'kicker': (14px, 16px, 18px),
+    'caption': (12px, 14px, 16px),
+    'brand': (11px, 13px, 16px),
+    'button': (12px, 14px, 16px),
+    'footer': (12px, 12px, 14px)
+);
+
+@each $name, $sizes in $project-font-sizes {
+    .fs-#{$name} {
+        font-size: nth($sizes, 1) !important;
+    }
+
+    @include media-breakpoint-up(md) {
+        .fs-#{$name} {
+            font-size: nth($sizes, 2) !important;
+        }
+    }
+
+    @include media-breakpoint-up(xl) {
+        .fs-#{$name} {
+            font-size: nth($sizes, 3) !important;
+        }
+    }
+}

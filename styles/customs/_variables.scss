@@ -4,8 +4,28 @@ $me-secondary: #6d5d65;
 $me-secondary-rgb: rgb(109, 93, 101);
 $me-subtle-secondary: #ada5a9;
 $me-subtle-secondary-rgb: rgb(173, 165, 169);
-$me-pink: #fceaea;
-$me-pink-rgb: rgb(252, 234, 234);
+$me-pink: #f8eae9;
+$me-pink-rgb: rgb(248, 234, 233);
+$me-background: #f8f7f7;
+$me-background-rgb: rgb(248, 247, 247);
 
 $primary: #c73834;
 $secondary: #6d5d65;
+$light: $me-background;
+$body-bg: $me-background;
+$body-color: #171516;
+$enable-rfs: false;
+
+// Extended spacing scale for the long-form landing page.
+$spacer: 1rem;
+$spacers: (
+    0: 0,
+    1: $spacer * 0.25,
+    2: $spacer * 0.5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    5: $spacer * 3,
+    6: $spacer * 4,
+    7: $spacer * 6,
+    8: $spacer * 8
+);
