@@ -131,7 +131,7 @@ a {
 .contact-button {
     pointer-events: auto;
     // border: 3px solid rgba(255, 255, 255, 0.92);
-    box-shadow: 0 4px 18px rgba(109, 93, 101, 0.05);
+    // box-shadow: 0 4px 18px rgba(109, 93, 101, 0.05);
     transition: box-shadow 180ms ease, transform 180ms ease, background-color 180ms ease;
 
     &:focus-visible {
@@ -173,9 +173,9 @@ a {
 }
 
 .hero-section {
-    min-height: clamp(760px, 55vw, 1584px);
+    min-height: clamp(700px, 55vw, 1000px);
     place-items: center;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .hero-content {
@@ -333,6 +333,12 @@ a {
             color: $me-primary;
             outline: none;
         }
+    }
+}
+
+@media (max-width: 512px) {
+    .portrait-visual {
+        width: fit-content!important;
     }
 }
 
