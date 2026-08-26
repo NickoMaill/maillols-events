@@ -13240,6 +13240,20 @@ textarea.form-control-lg {
     font-size: 45px !important;
   }
 }
+.fs-intro {
+  font-size: 30px !important;
+}
+
+@media (min-width: 768px) {
+  .fs-intro {
+    font-size: 42px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .fs-intro {
+    font-size: 45px !important;
+  }
+}
 .fs-list {
   font-size: 27px !important;
 }
