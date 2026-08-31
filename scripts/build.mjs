@@ -4,6 +4,7 @@ import path from "path";
 const root = process.cwd();
 const distPath = root + "/dist";
 const version = Math.floor(Date.now() / 1000);
+const isProduction = process.argv.includes("--production");
 /**
  * @type {{ folder: string; files: { name: string; src: string, isFolder?: boolean }[] }[]}
  */
@@ -13,6 +14,7 @@ const build = [
 		files: [
 			{ name: "web.min.css", src: root + "/styles" },
 			{ name: "custom.bootstrap.min.css", src: root + "/styles" },
+			{ name: "animate.min.css", src: root + "/styles/libs" },
 		],
 	},
 	{
@@ -79,4 +81,25 @@ content = content.replaceAll("public/", "/").replace(/(href|src)="([^"]+\.(?:css
 	return `${attr}="${url}?v=${version}"`;
 });
 
-fs.writeFileSync(distPath + "/index.html", content);
+if (!isProduction) {
+    content = content.replace(
+        "</head>",
+        `    <meta name="robots" content="noindex, nofollow">\n</head>`
+    );
+
+    fs.writeFileSync(
+        path.join(distPath, "robots.txt"),
+        `User-agent: *\nDisallow: /\n`
+    );
+} else {
+    // Au cas où public/ contiendrait un robots.txt
+	    content = content.replace(
+        `<!-- <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> -->`,
+        `<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">`
+    );
+    fs.rmSync(path.join(distPath, "robots.txt"), {
+        force: true,
+    });
+}
+
+fs.writeFileSync(path.join(distPath, "index.html"), content);

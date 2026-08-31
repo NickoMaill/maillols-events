@@ -91,15 +91,16 @@ $utilities: map-merge(
 // Fixed, semantic type scale using Bootstrap's md and xl breakpoints.
 $project-font-sizes: (
     'display': (80px, 100px, 100px),
-    'editorial': (42px, 52px, 50px),
-    'list': (27px, 32px, 35px),
-    'expertise': (28px, 36px, 44px),
+    'editorial': (42px, 42px, 45px),
+    'intro': (30px, 42px, 45px),
+    'list': (27px, 32px, 32px),
+    'expertise': (28px, 36px, 40px),
     'step': (28px, 34px, 40px),
-    'body': (17px, 18px, 20px),
+    'body': (17px, 17px, 22px),
     'contact': (16px, 18px, 20px),
     'eyebrow': (14px, 16px, 18px),
     'kicker': (14px, 16px, 18px),
-    'caption': (12px, 14px, 16px),
+    'caption': (10px, 12px, 14px),
     'brand': (11px, 13px, 16px),
     'button': (12px, 14px, 16px),
     'footer': (12px, 12px, 14px)

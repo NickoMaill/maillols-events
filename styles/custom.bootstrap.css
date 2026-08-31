@@ -8848,7 +8848,7 @@ textarea.form-control-lg {
 
 .text-secondary-subtle {
   --bs-text-opacity: 1;
-  color: #ada5a9 !important;
+  color: #948e91 !important;
 }
 
 .text-opacity-25 {
@@ -13232,12 +13232,26 @@ textarea.form-control-lg {
 
 @media (min-width: 768px) {
   .fs-editorial {
-    font-size: 52px !important;
+    font-size: 42px !important;
   }
 }
 @media (min-width: 1200px) {
   .fs-editorial {
-    font-size: 50px !important;
+    font-size: 45px !important;
+  }
+}
+.fs-intro {
+  font-size: 30px !important;
+}
+
+@media (min-width: 768px) {
+  .fs-intro {
+    font-size: 42px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .fs-intro {
+    font-size: 45px !important;
   }
 }
 .fs-list {
@@ -13251,7 +13265,7 @@ textarea.form-control-lg {
 }
 @media (min-width: 1200px) {
   .fs-list {
-    font-size: 35px !important;
+    font-size: 32px !important;
   }
 }
 .fs-expertise {
@@ -13265,7 +13279,7 @@ textarea.form-control-lg {
 }
 @media (min-width: 1200px) {
   .fs-expertise {
-    font-size: 44px !important;
+    font-size: 40px !important;
   }
 }
 .fs-step {
@@ -13288,12 +13302,12 @@ textarea.form-control-lg {
 
 @media (min-width: 768px) {
   .fs-body {
-    font-size: 18px !important;
+    font-size: 17px !important;
   }
 }
 @media (min-width: 1200px) {
   .fs-body {
-    font-size: 20px !important;
+    font-size: 22px !important;
   }
 }
 .fs-contact {
@@ -13339,17 +13353,17 @@ textarea.form-control-lg {
   }
 }
 .fs-caption {
-  font-size: 12px !important;
+  font-size: 10px !important;
 }
 
 @media (min-width: 768px) {
   .fs-caption {
-    font-size: 14px !important;
+    font-size: 12px !important;
   }
 }
 @media (min-width: 1200px) {
   .fs-caption {
-    font-size: 16px !important;
+    font-size: 14px !important;
   }
 }
 .fs-brand {
