@@ -13372,12 +13372,12 @@ textarea.form-control-lg {
 
 @media (min-width: 768px) {
   .fs-agency {
-    font-size: 9px !important;
+    font-size: 10px !important;
   }
 }
 @media (min-width: 1200px) {
   .fs-agency {
-    font-size: 9px !important;
+    font-size: 12px !important;
   }
 }
 .fs-brand {
