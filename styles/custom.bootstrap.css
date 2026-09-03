@@ -13366,6 +13366,20 @@ textarea.form-control-lg {
     font-size: 14px !important;
   }
 }
+.fs-agency {
+  font-size: 8px !important;
+}
+
+@media (min-width: 768px) {
+  .fs-agency {
+    font-size: 9px !important;
+  }
+}
+@media (min-width: 1200px) {
+  .fs-agency {
+    font-size: 9px !important;
+  }
+}
 .fs-brand {
   font-size: 11px !important;
 }
