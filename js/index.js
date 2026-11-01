@@ -31,6 +31,8 @@ const reOrderSteps = ({ matches: isMobile }) => {
     const coordonner = document.getElementById("coordonner");
     const concretiser = document.getElementById("concretiser");
 
+    if (!comprendre || !structurer || !coordonner || !concretiser) return;
+
     const parent1 = comprendre.parentElement;
     const parent2 = concretiser.parentElement;
 

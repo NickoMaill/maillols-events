@@ -14,6 +14,7 @@ const build = [
 		files: [
 			{ name: "web.min.css", src: root + "/styles" },
 			{ name: "custom.bootstrap.min.css", src: root + "/styles" },
+			{ name: "legal.css", src: root + "/styles" },
 			{ name: "animate.min.css", src: root + "/styles/libs" },
 		],
 	},
@@ -69,37 +70,39 @@ build.forEach((d) => {
 	});
 });
 
-const htmlFile = root + "/index.html";
+for (const page of ["index.html", "mentions-legales.html", "politique-confidentialite.html"]) {
+	const htmlFile = path.join(root, page);
 
-let content = fs.readFileSync(htmlFile, { encoding: "utf-8" });
+	let content = fs.readFileSync(htmlFile, { encoding: "utf-8" });
 
-content = content.replaceAll("public/", "/").replace(/(href|src)="([^"]+\.(?:css|js))"/g, (_, attr, url) => {
-	if (url.startsWith("http")) {
-		return `${attr}="${url}"`;
+	content = content.replaceAll("public/", "/").replace(/(href|src)="([^"]+\.(?:css|js))"/g, (_, attr, url) => {
+		if (url.startsWith("http")) {
+			return `${attr}="${url}"`;
+		}
+
+		return `${attr}="${url}?v=${version}"`;
+	});
+
+	if (!isProduction) {
+	    content = content.replace(
+	        "</head>",
+	        `    <meta name="robots" content="noindex, nofollow">\n</head>`
+	    );
+
+	    fs.writeFileSync(
+	        path.join(distPath, "robots.txt"),
+	        `User-agent: *\nDisallow: /\n`
+	    );
+	} else {
+	    // Au cas où public/ contiendrait un robots.txt
+		    content = content.replace(
+	        `<!-- <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> -->`,
+	        `<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">`
+	    );
+	    fs.rmSync(path.join(distPath, "robots.txt"), {
+	        force: true,
+	    });
 	}
 
-	return `${attr}="${url}?v=${version}"`;
-});
-
-if (!isProduction) {
-    content = content.replace(
-        "</head>",
-        `    <meta name="robots" content="noindex, nofollow">\n</head>`
-    );
-
-    fs.writeFileSync(
-        path.join(distPath, "robots.txt"),
-        `User-agent: *\nDisallow: /\n`
-    );
-} else {
-    // Au cas où public/ contiendrait un robots.txt
-	    content = content.replace(
-        `<!-- <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> -->`,
-        `<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">`
-    );
-    fs.rmSync(path.join(distPath, "robots.txt"), {
-        force: true,
-    });
+	fs.writeFileSync(path.join(distPath, page), content);
 }
-
-fs.writeFileSync(path.join(distPath, "index.html"), content);
